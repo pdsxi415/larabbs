@@ -32,8 +32,8 @@ Route::post('email/resend', 'Auth\VerificationController@resend')->name('verific
 Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 
 //帖子
-Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
-
+Route::resource('topics', 'TopicsController', ['only' => ['index', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 //分类列表话题
 Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
