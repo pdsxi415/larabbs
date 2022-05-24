@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, MustVerifyEmailTrait;
-    
+
     use Notifiable {
         notify as protected laravelNotify;
     }
@@ -76,5 +76,12 @@ class User extends Authenticatable implements MustVerifyEmail
     public function replies()
     {
         return $this->hasMany(Reply::class);
+    }
+
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
     }
 }
