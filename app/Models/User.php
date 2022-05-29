@@ -16,6 +16,8 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasRoles;
 
+    use Traits\ActiveUserHelper;
+
     use HasApiTokens, HasFactory, Notifiable, MustVerifyEmailTrait;
 
     use Notifiable {
