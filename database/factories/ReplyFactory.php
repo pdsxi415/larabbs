@@ -12,7 +12,7 @@ class ReplyFactory extends Factory
     public function definition()
     {
         return [
-            'content' => $this->faker->sentence(),
+            'content' => $this->faker->realText(100),
             'topic_id' => rand(1, 100),
             'user_id' => rand(1, 10),
         ];
